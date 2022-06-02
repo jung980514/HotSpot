@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>DB</title>
+    <style>
+      h1 {
+        padding:1em;
+        text-align:center;
+        background-color:lightskyblue;
+        color:white;
+      }
+      h2 {
+        text-align:center;
+      }
+      form {
+        text-align:center;
+      }
+    </style>
+</head>
+<body>
+<h1>Student Management System</h1>
+<br><br>
+<h2>Update record</h2>
+<form action="/updateData" method="POST">
+    {% csrf_token %}
+    <p>Id: <input type="text" name="id" value="{{edit.id}}"/></p>
+    <p>Firstname: <input type="text" name="firstname" value="{{edit.firstname}}"/></p>
+    <p>Secondname: <input type="text" name="secondname" value="{{edit.secondname}}"/></p>
+    <p>Age: <input type="text" name="age" value="{{edit.age}}"/></p>
+    <p>Major: <input type="text" name="major" value="{{edit.major}}"/></p>
+    <p>Address: <input type="text" name="address" value="{{edit.address}}"/></p>
+    <p><input type="hidden" name="beforeid" value="{{edit.id}}"/></p>
+    <input type="submit" value="Update">
+</form>
+</body>
+</html>

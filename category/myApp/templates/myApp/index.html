@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>DB</title>
+    <style>
+      h1 {
+        padding:1em;
+        text-align:center;
+        background-color:lightskyblue;
+        color:white;
+      }
+      table {
+        width: 100%;
+        text-align: center;
+        border:1px solid black;
+        margin:auto;
+        border-collapse:collapse;
+      }
+      th, td{
+        border:1px solid gray;
+        padding: 10px;
+      }
+    </style>
+</head>
+<body>
+<h1>Student Management System</h1>
+<br><br><br><br>
+{% block content %}
+{% if students %}
+<div>
+        <button style="position:absolute;left:67%;height:30px;background-color:limegreen;
+                        border-color:limegreen;color:white"
+                onclick="location.href='/writeData'">+Add new record
+        </button>
+</div>
+<br><br><br><br>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First name</th>
+                <th>Second name</th>
+                <th>Age</th>
+                <th>Major</th>
+                <th>Address</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+            {% for student_list in students %}
+            <tbody>
+                <tr>
+                    <td>{{ student_list.pk }}</td>
+                    <td>{{ student_list.firstname }}</td>
+                    <td>{{ student_list.secondname }}</td>
+                    <td>{{ student_list.age }}</td>
+                    <td>{{ student_list.major }}</td>
+                    <td>{{ student_list.address }}</td>
+                    <td><button style="background-color:blue;border-color:blue;color:white" type = "button"
+                                onclick="location.href='/editData?id={{ student_list.pk }}'">update</button>
+                        <button style="background-color:red;border-color:red;color:white" type="button"
+                                onclick="location.href='/deleteData?id={{ student_list.pk }}'">delete</button>
+                    </td>
+
+                </tr>
+            </tbody>
+            {% endfor %}
+    </table>
+{% endif %}
+{% endblock %}
+</body>
+</html>
